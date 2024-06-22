@@ -1,0 +1,153 @@
+:root {
+  --input-font-size: 32px;
+  --primary-font-size: 128px;
+  --secondary-font-size: 16px;
+  --off-black-clr: hsl(0, 0%, 8%);
+  --white-clr: hsl(0, 0%, 100%);
+  --off-white-clr: hsl(0, 0%, 94%);
+  --light-grey: hsl(0, 0%, 86%);
+  --smokey-grey: hsl(0, 1%, 44%);
+  --purple-primary-clr: hsl(259, 100%, 65%);
+  --light-red-primary-clr: hsl(0, 100%, 67%);
+  --mobile-breakpoint: 375px;
+  --desktop-breakpoint: 1440px;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: "Inter", sans-serif;
+  display: grid;
+  place-items: center;
+  background-color: var(--light-grey);
+}
+
+.container {
+  width: min(90%, 55rem);
+  padding: 3rem;
+  background-color: var(--off-white-clr);
+  border-radius: 1rem 1rem 10rem 1rem;
+}
+
+.InputPanel {
+  display: flex;
+  gap: 1rem;
+
+  label {
+    font-size: 1.2rem;
+    color: var(--smokey-grey);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  input {
+    cursor: pointer;
+    margin-block: 0.25rem;
+    width: 100%;
+    max-width: 10rem;
+    padding: 0.25em 0.5em;
+    border: 2px solid var(--light-grey);
+    border-radius: 10px;
+    font-size: var(--input-font-size);
+    font-weight: bold;
+    caret-color: var(--purple-primary-clr);
+
+    &.error {
+      border: 2px solid var(--light-red-primary-clr);
+    }
+
+    &:focus {
+      outline: none !important;
+      border-color: var(--purple-primary-clr);
+    }
+  }
+
+  .error:not(input) {
+    color: var(--light-red-primary-clr);
+  }
+}
+
+.SubmitInput {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 1rem;
+
+  .line {
+    height: 3px;
+    flex: 1;
+    background-color: var(--light-grey);
+  }
+
+  button {
+    cursor: pointer;
+    height: 100px;
+    aspect-ratio: 1;
+    padding: 2rem;
+    background-image: url("./assets/images/icon-arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 4rem;
+    background-color: var(--purple-primary-clr);
+    border-radius: 50%;
+    border: 0;
+    transition: 0.125s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: var(--off-black-clr);
+    }
+  }
+}
+
+.ShowPanel {
+  .ShowValue {
+    font-size: 4rem;
+    font-style: italic;
+    font-weight: 800;
+
+    span {
+      color: var(--purple-primary-clr);
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+
+  .InputField {
+    input {
+      font-size: 1.5rem;
+    }
+
+    label {
+      font-size: 0.75rem;
+    }
+  }
+
+  .SubmitInput {
+    position: relative;
+
+    button {
+      height: 75px;
+      background-size: 3rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .ShowValue {
+    font-size: 3rem;
+  }
+}
